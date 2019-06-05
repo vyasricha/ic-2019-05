@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace horsedev
 {
@@ -31,7 +32,14 @@ namespace horsedev
         internal void ValidateTheRedordCreated()
         {
             //implement explicit - assignment
-            Thread.Sleep(3000); // implicit wait
+            //Thread.Sleep(15000); // implicit wait
+
+            // implementing explicit wait 
+            //WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(15));
+            //IWebElement nextPageForWait = wait.Until<IWebElement>(d => d.FindElement(By.XPath("//span[contains(.,'Go to the next page')]")));
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("//span[contains(.,'Go to the next page')]")));
+
 
             try {
                 // to iterate between pages
