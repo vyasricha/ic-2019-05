@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using horsedev.helpers;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
@@ -12,8 +13,11 @@ namespace horsedev
         public void Setup()
         {
             driver = new ChromeDriver();
+            //populate the data in excel
+            ExcelLibHelpers.PopulateInCollection(@"C:\Code\ic\ic-2019-05\horsedev\Data\testdata.xlsx", "timeTestData");
             LoginPage loginPage = new LoginPage(driver);
-            loginPage.LoginSuccess();            
+            loginPage.LoginSuccess();   
+           
         }
 
         [Test]
